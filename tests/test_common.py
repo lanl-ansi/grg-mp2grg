@@ -27,7 +27,7 @@ for wd, directory, files in os.walk(os.path.dirname(os.path.realpath(__file__))+
     for file in files:
         if file.endswith('.m'):
             warning_files.append(wd+'/'+file)
-del wd, directory, files
+#del wd, directory, files
 
 
 incorrect_files = []
