@@ -25,8 +25,8 @@ grg-mp2grg is designed to be a library that supports other software.
 It is not immediately useful from the terminal.
 However, you can test the parsing functionality from the command line with:: 
 
-    python -m grg_mpdata.io <path to Matpower or GRG case file>
+    python -m grg_mp2grg.io <path to Matpower or GRG case file>
 
-If this command is successful, you will see a translated plain text version of the network data printed to the terminal.
+If this command is successful, you will see a translated plain text version of the translated network data printed to the terminal.
 
 
