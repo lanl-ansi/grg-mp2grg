@@ -1,0 +1,16 @@
+language: python
+os:
+  - linux
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+install:
+  - pip install tox-travis
+  - pip install codecov
+script:
+  - tox
+  - ./check_version.py
+after_success:
+  - codecov
