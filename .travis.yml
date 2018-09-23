@@ -1,17 +1,26 @@
 language: python
 os:
-  - linux
+- linux
 python:
-  - "2.7"
-  - "3.4"
-  - "3.5"
-  - "3.6"
+- '2.7'
+- '3.4'
+- '3.5'
+- '3.6'
 install:
-  - pip install tox-travis
-  - pip install codecov
-  - pip install grg-mpdata grg-grgdata # required for calling check_version
+- pip install tox-travis
+- pip install codecov
+- pip install grg-mpdata grg-grgdata
 script:
-  - tox
-  - ./check_version.py
+- tox
+- "./check_version.py"
 after_success:
-  - codecov
+- codecov
+deploy:
+- provider: pypi
+  user: ccoffrin
+  password:
+    secure: OHC0matUvz7/r3yVrtOlVjUBa1ULrH2H/3flQYL7YyBG4pBRNVTGrMmBKT4YPNHtcHIycLmrcCN1HEFWQC8I1yvh7mtSC+vTXqQhnC3yaEGvRAWxnp7kEJs925lkHOBfDdY03Dc/cXJfv/rCCyo0exItvsASFZHY6AyFbNbf7gHy9VyAK9hTT+kJKbl6JziHxl8G0LZUhjjz5w+5qAS8qlpOOGSGhFZJn7Z7i68MtLOHhXwGhojByCWIfYHdBVs+5cq7r/8L9vp/1Pcwd9vP23i1JTWjQ2Q36r/j3wHyNiO/w0YK83ATPw29yuw0OZdF8d9/cTP5VSbt0qC+WOHtiNZAsVvUxhVeF332I9MvmhcP4o7u+R/JI9LRpKBgIiJKQ+FufRC6z0l6R9E1VyWpbDDIu7tliR2T5coy6xr7wTPEaTqzDew3M7h1MopUHJ5bk4FTT/0T+x9FuJ/m0hHPGtPKE3f7tIPcRx21OlCP0uE2Msz9Cmvi5iKvfYM9R+cPomMb0e7pXv5zKLG3ic8t6QlZvaTMNv+H/VHiSHX5zi4wWJjhj6hF7P3n0EVyqrP7jmixkHtyP8R9Ii9gMbrX6XgTyvGyAHL5n9zk4nViF8eKunAO8OVQj+gldZP5K+2ankTXF2NVeU+4dQCR61hHJjhUEaBRq+54TQafpSAJ+Ac=
+  on:
+    tags: true
+    branch: master
+    condition: $TRAVIS_PYTHON_VERSION = '3.6'
