@@ -56,4 +56,14 @@ class TestGRGVariants:
         assert len(mp_case.gen) == 5
         assert mp_case.gencost == None
 
+    def test_no_groups(self):
+        grg_case = grg_mp2grg.io.parse_mp_case_file(os.path.dirname(os.path.realpath(__file__))+'/data/idempotent/pglib-opf/pglib_opf_case5_pjm.m').to_grg()
+        del grg_case['groups']
+
+        mp_case = grg_mp2grg.io.build_mp_case(grg_case)
+
+        assert len(mp_case.bus) == 5
+        assert len(mp_case.branch) == 6
+        assert len(mp_case.gen) == 5
+        assert len(mp_case.gencost) == 5
 

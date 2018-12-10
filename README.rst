@@ -41,7 +41,7 @@ Changelog
 
 **staged**
 
-- nothing
+- fixed grg2mp bug when no groups were present
 
 **v0.1.0**
 

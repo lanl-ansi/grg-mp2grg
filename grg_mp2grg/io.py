@@ -262,8 +262,12 @@ def build_mp_case(grg_data, mapping_ids=None, add_gen_costs=False, add_bus_names
     mp_busnames = None
 
 
-    areas = {k:grp for k,grp in grg_data['groups'].items() if grp['type'] == 'area'}
-    zones = {k:grp for k,grp in grg_data['groups'].items() if grp['type'] == 'zone'}
+    if 'groups' in grg_data:
+        areas = {k:grp for k,grp in grg_data['groups'].items() if grp['type'] == 'area'}
+        zones = {k:grp for k,grp in grg_data['groups'].items() if grp['type'] == 'zone'}
+    else:
+        areas = {}
+        zones = {}
 
     area_index_lookup = {}
     if all('source_id' in area for k,area in areas.items()):
