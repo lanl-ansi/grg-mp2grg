@@ -41,6 +41,7 @@ Changelog
 
 **staged**
 
+- fixed grg2mp bug when adding bus names
 - fixed grg2mp bug when no groups were present
 
 **v0.1.0**

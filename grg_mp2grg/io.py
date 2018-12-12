@@ -259,8 +259,8 @@ def build_mp_case(grg_data, mapping_ids=None, add_gen_costs=False, add_bus_names
     mp_branches = []
     mp_gencosts = None
     mp_dclines = None
+    mp_dclinecosts = None
     mp_busnames = None
-
 
     if 'groups' in grg_data:
         areas = {k:grp for k,grp in grg_data['groups'].items() if grp['type'] == 'area'}
@@ -306,6 +306,9 @@ def build_mp_case(grg_data, mapping_ids=None, add_gen_costs=False, add_bus_names
                     warnings.warn('component %s is in multiple zones only %s will be used.' % (comp_id, zone_index_lookup[comp_id]), MP2GRGWarning)
             idx += 1
 
+
+    if add_bus_names:
+        mp_busnames = []
 
     for bid, buses in buses_by_bid.items():
         if len(buses) > 1:
@@ -925,7 +928,7 @@ def build_mp_case(grg_data, mapping_ids=None, add_gen_costs=False, add_bus_names
     print_err('grg buses: {}'.format(len(cbt['bus'])))
     print_err(' mp buses: {}'.format(len(mp_buses)))
 
-    case = Case(grg_data['network']['id'], '\'2\'', base_mva, mp_buses, mp_gens, mp_branches, mp_gencosts, mp_dclines, mp_busnames)
+    case = Case(grg_data['network']['id'], '\'2\'', base_mva, mp_buses, mp_gens, mp_branches, mp_gencosts, mp_dclines, mp_dclinecosts, mp_busnames)
 
     return case
 
